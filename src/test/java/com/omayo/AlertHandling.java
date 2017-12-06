@@ -34,7 +34,7 @@ public class AlertHandling
 		alert.accept();
 		String actual = "What is your name?";
 		Assert.assertEquals(altText, actual);
-		System.out.println("Both Message are equal");
+		System.out.println("Both msg are same");
 		driver.close();
 		 
 	}
