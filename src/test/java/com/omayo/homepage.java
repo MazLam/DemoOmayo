@@ -24,7 +24,7 @@ public class homepage
 	 WebElement pageone = driver.findElement(By.xpath(".//*[@id='Blog1']/div[1]/div/div/div/div[1]/h3"));
 	 pageone.click();
 	 String page = driver.getTitle();
-	 System.out.println("The title of the page is " + page);
+	 System.out.println("The title  is " + page);
 	 
 	 WebElement homebutton = driver.findElement(By.id("home"));
 	 homebutton.click();
