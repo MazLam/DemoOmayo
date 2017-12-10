@@ -6,8 +6,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver.Navigation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -23,8 +25,34 @@ public class homepage
 	 driver.manage().window().maximize();
 	 WebElement pageone = driver.findElement(By.xpath(".//*[@id='Blog1']/div[1]/div/div/div/div[1]/h3"));
 	 pageone.click();
+	 // validating correct page titile 
 	 String page = driver.getTitle();
 	 System.out.println("The title  is " + page);
+	 if (page.equals("omayo")) 
+	 {
+		 System.out.println("correct page is displayed");
+	 }
+	 else 
+	 {
+		 System.out.println("correct page is not displayed");
+	 }
+	 
+	 boolean pagname = page.contains("yo");
+	 System.out.println("Title of the page contains:" +pagname );
+	 // validation done 
+	 // checking page contains an element or not 
+	 String pageinfo = driver.getPageSource();
+	 Assert.assertTrue (pageinfo.contains("SeleniumTutorial"));
+	 System.out.println("SeleniumTutorial is availabel in page");
+	 if (pageinfo.contains("SeleniumTutorial"))
+	 {
+		 System.out.println("object selenium exist in page");
+	 }
+	 else 
+	 {
+		 System.out.println("Element selenium is not available in page ");
+	 }
+	 // pagesource info validation done 
 	 
 	 WebElement homebutton = driver.findElement(By.id("home"));
 	 homebutton.click();
@@ -69,11 +97,21 @@ public class homepage
 	 boolean isplyed = driver.findElement(By.id("sa")).isDisplayed();
 	 System.out.println(isplyed);
 	 
+	 // checking Element enable or not 
 	WebElement link =  driver.findElement(By.id("link1"));
+	boolean linkclick = link.isDisplayed();
+	System.out.println("link is enabled " + linkclick);
 	link.click();
+	//........................... done  going to new page 
 	
-	 
-	 
+	// checking navigation working or not 
+	Navigation navigate = driver.navigate();
+	
+	navigate.refresh();
+	navigate.back();
+	 Assert.assertTrue(page.contains("omayo"));
+	 System.out.println("navigation is successfull");
+	 //.............. navigation working  ??
 	 
 	 
 	 driver.close();
